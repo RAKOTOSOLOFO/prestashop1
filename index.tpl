@@ -1,3 +1,4 @@
+{debug}
 {*
 * 2007-2016 PrestaShop
 *
@@ -24,11 +25,27 @@
 *}
 {if isset($HOOK_HOME_TAB_CONTENT) && $HOOK_HOME_TAB_CONTENT|trim}
     {if isset($HOOK_HOME_TAB) && $HOOK_HOME_TAB|trim}
+
         <ul id="home-page-tabs" class="nav nav-tabs clearfix">
 			{$HOOK_HOME_TAB}
 		</ul>
-	{/if}
-	<div class="tab-content">{$HOOK_HOME_TAB_CONTENT}</div>
+{/if}
+
+
+{assign var="count" value= 5 - $cart_qties} {* short-hand *}
+{if $cart_qties >= 5}
+<p> {l s="Free transport"} </p>
+{else}
+<p>{l s="Free transport in %d articles" sprintf=$count}</p>
+
+{/if}
+	<div class="tab-content">{$HOOK_HOME_TAB_CONTENT}
+{$meta_title}
+
+{l s='hello world'}
+{l|truncate s=' Tibau he only makes me miseres but it goes car I still happen to understand a lot of things. He explain well'}
+
+  </div>
 {/if}
 {if isset($HOOK_HOME) && $HOOK_HOME|trim}
 	<div class="clearfix">{$HOOK_HOME}</div>
